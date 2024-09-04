@@ -7,14 +7,16 @@ async function bootstrap() {
   app.enableCors();
   await app.listen(3001);
 
-  const microservice =
-    await NestFactory.createMicroservice<MicroserviceOptions>(AppModule, {
+  const microApp = await NestFactory.createMicroservice<MicroserviceOptions>(
+    AppModule,
+    {
       transport: Transport.TCP,
       options: {
         host: '127.0.0.1',
         port: 8877,
       },
-    });
-  await microservice.listen();
+    },
+  );
+  await microApp.listen();
 }
 bootstrap();

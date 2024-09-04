@@ -9,13 +9,13 @@ export class MathController {
 
   @Post('sum')
   sum1(@Body('numbers') numbers: number[]): number {
-    this.logger.log('Sum: ' + numbers);
+    this.logger.log('Sum 1 : ' + numbers);
     return this.mathService.accumulate(numbers);
   }
 
   @MessagePattern({ cmd: 'sum' })
-  sum2(@Body('numbers') numbers: number[]): number {
-    this.logger.log('Sum: ' + numbers);
+  sum2(numbers: number[]): number {
+    this.logger.log('Sum 2 : ' + numbers);
     return this.mathService.accumulate(numbers);
   }
 }
